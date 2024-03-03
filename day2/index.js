@@ -4,15 +4,15 @@ function calcGiftSurfaceArea(l, w, h) {
     return 2*l*w + 2*w*h + 2*h*l
 }
 
-function calcSmallestSide(l, w, h) {
+function calcSmallestSideArea(l, w, h) {
     // return smallest value out of l*w, l*h, w*h
-    const minimumValue = Math.min(l*w, l*h, w*h)
-    return minimumValue
+    const minValue = Math.min(l*w, l*h, w*h)
+    return minValue
 }
 
 function calcTotalPaper(l, w, h) {
-    const totalSurfaceArea = calcGiftSurfaceArea(l, w, h) + calcSmallestSide(l, w, h)
-    return totalSurfaceArea
+    const totalPaperArea = calcGiftSurfaceArea(l, w, h) + calcSmallestSideArea(l, w, h)
+    return totalPaperArea
 }
 
 
@@ -28,7 +28,7 @@ let totalSqFtPaper = 0
 
 let totalRibbon = 0
 
-const giftsArray = puzzle.split('\n')
+const giftsArray = puzzleInput.split('\n')
 
 const giftsObjArray = giftsArray.map(gift =>{
     const dimensions = gift.split('x');
@@ -39,11 +39,10 @@ const giftsObjArray = giftsArray.map(gift =>{
     })
 })
 
-console.log(giftsArray)
-console.log(giftsObjArray)
+// console.log(giftsArray)
+// console.log(giftsObjArray)
 
-
-const egArray = [{l: 2, w: 3, h: 4}, {l:1, w:1, h:10}]
+// const egArray = [{l: 2, w: 3, h: 4}, {l:1, w:1, h:10}]
 
 for (let i = 0; i < giftsObjArray.length; i++) {
     totalSqFtPaper = totalSqFtPaper + calcTotalPaper(giftsObjArray[i].l, giftsObjArray[i].w, giftsObjArray[i].h)
@@ -51,6 +50,6 @@ for (let i = 0; i < giftsObjArray.length; i++) {
 }
 
 
-
-console.log(totalRibbon)
+console.log(`The elves should order ${totalSqFtPaper} square feet of wrapping paper.`)
+console.log(`The elves should order ${totalRibbon} feet of ribbon.`)
 
