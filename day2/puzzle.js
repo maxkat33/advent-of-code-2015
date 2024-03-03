@@ -1,4 +1,4 @@
-export const puzzle = `4x23x21
+export const puzzleInput = `4x23x21
 22x29x19
 11x4x11
 8x10x5
